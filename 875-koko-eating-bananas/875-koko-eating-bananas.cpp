@@ -20,22 +20,23 @@ public:
         sort(piles.begin(),piles.end());
         int left=0;
         int right=piles.size()-1;
-        while(left<=right)
-        {
-            int mid=left+(right-left)/2;
-            if(check(piles,h,piles[mid])==0)
-            {
-                left=mid+1;
-            }
-            else 
-                right=mid-1;
-        }
+        int n=piles.size();
+        // while(left<=right)
+        // {
+        //     int mid=left+(right-left)/2;
+        //     if(check(piles,h,piles[mid])==0)
+        //     {
+        //         left=mid+1;
+        //     }
+        //     else 
+        //         right=mid-1;
+        // }
         //cout<<left<<endl;
         // if(left>=1&&left<piles[left-1])
         // {
         //     left=piles[left-1];
         // }
-        right=piles[left];
+        right=piles[n-1];
         left=1;
         //cout<<left<<" "<<right<<endl;
         while(left<=right)
