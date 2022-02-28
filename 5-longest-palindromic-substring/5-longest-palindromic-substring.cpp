@@ -30,7 +30,7 @@ public:
                 if(dp[i][j]==0&&(i+1)<n&&(j-1)>=0)
                 {
                     if(s[i]==s[j])
-                    dp[i][j]=dp[i+1][j-1];//i,j is palindrome if (i+1,j-1) and s[i]==s[j]
+                    dp[i][j]=dp[i+1][j-1];//i,j is palindrome if (i+1,j-1) and s[i]==s[j] we use bottom up because i+1,j-1 should be known fist
                 }
                 if(dp[i][j]&&j-i+1>l)
                 {
