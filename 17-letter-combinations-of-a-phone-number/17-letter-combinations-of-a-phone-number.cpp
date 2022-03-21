@@ -2,54 +2,55 @@ class Solution {
 public:
     map<int,string>m;
     vector<string>ans;
-    void solution(string digits,string s,int i)
+    void help(int index,string digits,string s)
     {
-        //cout<<i<<endl;
-        if(i>=digits.size())
+        //cout<<"yo"<<endl;
+        if(index==digits.size())
         {
             //cout<<s<<endl;
-            if(s.size()!=0)
+            if(!s.empty())
             ans.push_back(s);
         }
-        else 
+        else if(index<digits.size())
         {
-            //cout<<m[i].size()<<endl;
-            int j;
-            for(j=0;j<m[digits[i]-48].size();j++)
+            //cout<<"yo"<<endl;
+            int i;
+            for(i=0;i<m[digits[index]-48].size();i++)
             {
-                //cout<<m[digits[i]-48]<<endl;
-                s.push_back(m[digits[i]-48][j]);
-                solution(digits,s,i+1);
+                //cout<<m[digits[index]-48]<<endl;
+                s.push_back(m[digits[index]-48][i]);
+                help(index+1,digits,s);
                 s.pop_back();
             }
         }
     }
     vector<string> letterCombinations(string digits) {
         int i;
-        char ch='a';
+        string s;
+        int num=97;
         for(i=2;i<=9;i++)
         {
             if(i==7||i==9)
             {
-                int j;
-                for(j=0;j<=3;j++)
-                m[i].push_back(ch+j);
-                ch=ch+4;
+                m[i].push_back(num);
+                m[i].push_back(num+1);
+                m[i].push_back(num+2);
+                m[i].push_back(num+3);
+                num=num+4;
             }
             else 
             {
-                int j;
-                for(j=0;j<=2;j++)
-                m[i].push_back(ch+j);
-                ch=ch+3;
+                m[i].push_back(num);
+                m[i].push_back(num+1);
+                m[i].push_back(num+2);
+                num=num+3;
             }
         }
         // for(i=2;i<=9;i++)
         // {
         //     cout<<m[i]<<endl;
         // }
-        string s;
-        solution(digits,s,0);
+        help(0,digits,s);
         return ans;
     }
 };
